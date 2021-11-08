@@ -254,13 +254,13 @@ width: 90%;
     width: 100%;
   }
   .column {
-    width: 100%;
+    width: 130%;
     display: block;
     margin-bottom: 20px;
-    margin-left: 15%;
+    margin-left: 10%;
   }
   .card{
-    width: 100%;
+    width: 130%;
   }
 }
 
