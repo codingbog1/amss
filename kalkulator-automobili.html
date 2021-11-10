@@ -1,0 +1,645 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="icon" type="image/gif/png" href="images/logo.jpeg">
+    <title>Auto-Moto Društvo Leskovac</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+    
+<script type="text/javascript"> 
+
+ 
+    
+    function polisaobv(osiguranje, kw, bonus) // Polisa osiguranja AMSS, Dunav, Delta Generali
+    
+    {
+    
+    var polisaobv = 
+    
+        [[[7843, 7839, 8371],   //P4 do 22kw
+        [9370, 	 9366, 10000],   //P4 do 33kw
+        [10908, 10903, 11641],   //P4 do 44kw
+        [12447, 12440, 13281],   //P4 do 55kw
+        [13974, 13967, 14911],   //P4 do 66kw
+        [16025, 16016, 17101],   //P4 do 84kw
+        [19090, 19081, 20370],   //P4 do 110kw
+        [22668, 22656, 24189]],  //P4 preko 110kw
+    
+        [[7451, 7448, 7952],    //P3 do 22kw
+        [8902,  8899, 9500],    //P3 do 33kw
+        [10363, 10360, 11060],   //P3 do 44kw
+        [11824, 11820, 12618],   //P3 do 55kw
+        [13275, 13291, 14166],   //P3 do 66kw
+        [15223, 15218, 16247],   //P3 do 84kw
+        [18135, 18127, 19352],   //P3 do 110kw
+        [21534, 21525, 22979]],  //P3 preko 110kw
+    
+        [[7059, 6664, 7115],    //P2 do 22kw
+        [8433,  7961, 8500],    //P2 do 33kw
+        [9818,  9268, 9895],    //P2 do 44kw
+        [11202, 10575, 11290],   //P2 do 55kw
+        [12576, 11872, 12675],   //P2 do 66kw
+        [14422, 13614, 14536],   //P2 do 84kw
+        [17181, 16219, 17314],   //P2 do 110kw
+        [20401, 19258, 20560]],  //P2 preko 110kw
+    
+        [[6667, 5880, 6278],    //P1 do 22kw
+        [7965,  7025, 7500],    //P1 do 33kw
+        [9272,  8178, 8731],    //P1 do 44kw
+        [10580, 9331, 9961],   //P1 do 55kw
+        [11878, 10475, 11184],   //P1 do 66kw
+        [13621, 12012, 12826],   //P1 do 84kw
+        [16226, 14311, 15278],   //P1 do 110kw
+        [19268, 16992, 18142]],  //P1 preko 110kw
+        
+        [[9020, 0, 9138],  // malus  15% do 22kw
+        [10776, 0, 10918],   // malus  15% do 33kw
+        [12545, 0, 12709],   // malus  15% do 44kw
+        [14314, 0, 14500],   // malus  15% do 55kw
+        [16070, 0, 16279],   // malus  15% do 66kw
+        [18428, 0, 18670],   // malus  15% do 84kw
+        [21953, 0, 22240],  // malus  15% do 110kw
+        [26058, 0, 26410]], // malus  15% preko 110kw
+        
+        [[10196, 0, 10330],  // malus  30% do 22kw
+        [12181, 0, 12343],   // malus  30% do 33kw
+        [14181, 0, 14366],   // malus  30% do 44kw
+        [16181, 0, 16393],   // malus  30% do 55kw
+        [18166, 0, 18403],   // malus  30% do 66kw
+        [20832, 0, 21106],   // malus  30% do 84kw
+        [24817, 0, 25140],  // malus  30% do 110kw
+        [29468, 0, 29854]], // malus  30% preko 110kw	
+        
+        [[11765, 0, 11920],  // malus 50% do 22kw
+        [14056, 0, 14241],   // malus 50% do 33kw
+        [16363, 0, 16577],   // malus 50% do 44kw
+        [18670, 0, 18915],   // malus 50% do 55kw
+        [20961, 0, 21234],  // malus 50% do 66kw
+        [24037, 0, 24353],  // malus 50% do 84kw
+        [28635, 0, 29008],  // malus 50% do 110kw
+        [34002, 0, 34446]]] // malus 50% preko 110kw
+    
+    
+        if(kw <= 22) kilovatiIndeks = 0
+        else if(kw <= 33)  kilovatiIndeks = 1
+        else if(kw <= 44)  kilovatiIndeks = 2
+        else if(kw <= 55)  kilovatiIndeks = 3
+        else if(kw <= 66)  kilovatiIndeks = 4
+        else if(kw <= 84)  kilovatiIndeks = 5
+        else if(kw <= 110) kilovatiIndeks = 6
+        else if(111 <= kw) kilovatiIndeks = 7
+    
+    
+    return polisaobv[bonus][kilovatiIndeks][osiguranje]
+    
+    }
+    
+    function tehnicki(ccm)   // Tehnicki pregled
+    
+    {
+    
+    if(ccm <= 1700) return 4100
+    else return 4100	
+    
+    }
+    
+    function provizija()   // Bancana provizija
+    
+    {
+    
+         return 300
+    
+    }
+    
+    function saobracajna(saob)   // Saobracajna dozvola
+    
+    {
+    
+         if(saob <= 0) return 0
+    else return 660
+    
+    }
+    
+    function opstinskaeko(opstina, ccm)   // Opstinska ekoloska taksa
+    
+    {
+    
+        var opstinskaeko = 
+    
+        [[0,	0,	0,	0,	0,	0, 0], // do 1800ccm
+        [0,		0,	0,	0,	0,	0, 0]] // preko 1800ccm
+    
+        if(ccm <= 1800) kubikazaIndeks = 0
+        else if(1800 <= ccm) kubikazaIndeks = 1
+    
+    return opstinskaeko[kubikazaIndeks][opstina]
+    
+    }
+    
+    function tablice(saob)   // Tablice
+    
+    {
+    
+        if(saob <= 1) return 0
+        else return 1093
+    
+    }
+    
+    function nalepnica()    // Nalepnica
+    
+    {
+    
+         return 236
+    
+    }
+    
+    function mup(saob)    // MUP
+    
+    {
+    
+         if(saob <= 0) return 520
+         else if(saob <= 1) return 1180
+         else return 2290
+    
+    }
+    
+    function porez(kubikaza, godiste)    // Porez
+    
+    {
+    
+        var taksa = 
+    
+        [[1310,	1113,	982,	786,	262],    // do 1150ccm
+        [2570,	2184,	1927,	1642,	514],    // od 1151-1300ccm
+        [5650,	4802,	4237,	3390,	1130],   // 1301-1600ccm
+        [11590,	9851,	8692,	6954,	2316],   // 1601-2000ccm
+        [57280,	48688,	42980,	34368,	11456],  // 2001-2500ccm
+        [116070,98659,	87052,	69642,	23214],  // 2501-3000ccm
+        [239890,203906,	179917,	143934,	47978]]  // preko 3000ccm
+    
+    
+        var starost = 2020 - godiste
+     
+    
+        if((0 <= starost) && (starost <= 5)) godisteIndeks = 0
+        else if((6 <= starost) && (starost <= 8)) godisteIndeks = 1
+        else if((9 <= starost) && (starost <= 10)) godisteIndeks = 2
+        else if((11 <= starost) && (starost <= 19)) godisteIndeks = 3
+        else if(20 <= starost) godisteIndeks = 4
+    
+         if((0 <= kubikaza) && (kubikaza <= 1150)) kubikazaIndeks = 0
+        else if((1151 <= kubikaza) && (kubikaza <= 1300))  kubikazaIndeks = 1
+        else if((1301 <= kubikaza) && (kubikaza <= 1600))  kubikazaIndeks = 2
+        else if((1601 <= kubikaza) && (kubikaza <= 2000))  kubikazaIndeks = 3
+        else if((2001 <= kubikaza) && (kubikaza <= 2500))  kubikazaIndeks = 4
+        else if((2501 <= kubikaza) && (kubikaza <= 3000))  kubikazaIndeks = 5
+        else if(3001 <= kubikaza) kubikazaIndeks = 6
+    
+         return taksa[kubikazaIndeks][godisteIndeks]
+    
+    }
+    
+    function komunalna(ccm, opstina)     // Komunalna taksa
+    
+    {
+    
+        
+        var komunalna = 
+        
+        [[590,	450,	370,	340,	320,	300,	250],      // do 903ccm
+        [590,	450,	370,	340,	320,	300,	250],      // do 1150ccm
+        [1170,	800,	480,	670,	320,	300,	250],      // do 1300ccm
+        [1770,	1200,	700,	1010,	646,	450,	375], 	   // do 1350ccm
+        [1770,	1200,	700,	1010,	646,	450,	375],      // do 1600ccm
+        [2370,	1800,	940,	1340,	1010,	800,	875],      // do 1800ccm
+        [2370,	1800,	940,	1340,	1010,	800,	875],      // do 2000ccm
+        [3570,	3000,	2130,	2010,	2056,	1500,	1250],     // do 2500ccm
+        [3570,	3000,	2130,	2010,	4112,	2300,	1875],     // do 3000ccm
+        [5900,	4500,	4730,	3350,	5126,	2850,	1875],     // do 3150ccm
+        [5900,	4500,	4730,	3350,	5126,	5400,	3125]]     // preko 3150ccm
+    
+    
+    
+        if(ccm <= 903) kubikazaIndeks = 0
+        else if(ccm <= 1150)  kubikazaIndeks = 1
+        else if(ccm <= 1300)  kubikazaIndeks = 2
+        else if(ccm <= 1350)  kubikazaIndeks = 3
+        else if(ccm <= 1600)  kubikazaIndeks = 4
+        else if(ccm <= 1800)  kubikazaIndeks = 5
+        else if(ccm <= 2000)  kubikazaIndeks = 6
+        else if(ccm <= 2500)  kubikazaIndeks = 7
+        else if(ccm <= 3000)  kubikazaIndeks = 8
+        else if(ccm <= 3150)  kubikazaIndeks = 9
+        else if(3151 <= ccm)  kubikazaIndeks = 10
+    
+        
+    return komunalna[kubikazaIndeks][opstina]
+    
+    
+    }
+    
+    function calculate(bonus, ccm, godiste, kw, osiguranje, opstina, saob)
+    
+    {                
+    
+        var numericExpression = /^[0-9]+$/ 
+            var decimalExpression = /^[1-9]\d*(\.\d{1,3})?$/
+    
+    
+        if (!(kw.match(decimalExpression))) alert("Niste uneli tacnu snagu motora (u kw), ili ste koristili zarez umesto tacke za odvajanje decimala")
+        else if (!(ccm.match(numericExpression))) alert("Niste uneli tacnu zapreminu motora (u ccm) ")
+        else if (!(godiste.match(numericExpression))) alert("Unesite tacno godi�te vozila")
+        else
+        {
+    
+                      suma = 0  
+                    suma += polisaobv(osiguranje, kw, bonus)	
+                    suma += porez(ccm, godiste)
+                    suma += komunalna(ccm, opstina)
+                    suma += opstinskaeko(opstina, ccm)
+                    suma += saobracajna (saob)
+                    suma += tablice (saob)
+                    suma += nalepnica ()
+                    suma += mup (saob)
+    
+    
+                    suma1 = 0  
+                       suma1 += polisaobv(osiguranje, kw, bonus)	
+                    suma1 += porez(ccm, godiste)
+                    suma1 += komunalna(ccm, opstina)
+                    suma1 += opstinskaeko(opstina, ccm)
+                    suma1 += tehnicki(ccm)
+                    suma1 += provizija()
+                    suma1 += saobracajna (saob)
+                    suma1 += tablice (saob)
+                    suma1 += nalepnica ()
+                    suma1 += mup (saob)
+    
+                
+    
+                    document.getElementById('tehnicki').innerHTML = tehnicki(ccm).toFixed(2) + " dinara"
+                    document.getElementById('provizija').innerHTML = provizija().toFixed(2) + " dinara"
+                    document.getElementById('polisaobv').innerHTML = polisaobv(osiguranje, kw, bonus).toFixed(2) + " dinara"
+                    document.getElementById('opstinskaeko').innerHTML = opstinskaeko(opstina, ccm).toFixed(2) + " dinara"
+                    document.getElementById('porez').innerHTML = porez(ccm, godiste).toFixed(2) + " dinara"
+                    document.getElementById('komunalna').innerHTML = komunalna(ccm, opstina).toFixed(2) + " dinara"
+                    document.getElementById('saobracajna').innerHTML = saobracajna(saob).toFixed(2) + " dinara"
+                    document.getElementById('tablice').innerHTML = tablice(saob).toFixed(2) + " dinara"
+                    document.getElementById('nalepnica').innerHTML = nalepnica().toFixed(2) + " dinara"
+                    document.getElementById('mup').innerHTML = mup(saob).toFixed(2) + " dinara"
+                    document.getElementById('ukupno').innerHTML = "<b>" + suma.toFixed(2) + " dinara </b>"
+                    document.getElementById('ukupnotp').innerHTML = "<b>" + suma1.toFixed(2) + " dinara </b>"
+    
+        }
+    
+    }  
+    
+    </script>
+<body>
+   <div class="header">
+        <img src="images/header.jpg" alt="automotodrustvoleskovac">
+        <div class="top-left">AUTO-MOTO DRUŠTVO LESKOVAC</div>
+        <div class="bottom-right">AMSS PARTNER</div>
+    </div>  
+
+    <div class="topnav" id="myTopnav">
+        <a href="#home" class="active"><img src="images/logo.jpeg" alt="automotodrustvoleskovac" style="width: 40px;"></a>
+        <a class="navb" href="index.html">POČETNA</a>
+        <a class="navc" href="registracija-vozila.html">REGISTRACIJA VOZILA</a>
+        <a class="navc" href="osiguranje.html">OSIGURANJE</a>
+        <a class="navc" href="kalkulator-automobili.html">KALKULATOR REGISTRACIJE</a>
+        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+          <i class="fa fa-bars"></i>
+        </a>
+    </div>
+    
+        <div class="container">
+            <center>
+            <div class="dropdown">
+                <button class="dropbtn">Tip vozila</button>
+                <div class="dropdown-content">
+                  <a href="kalkulator-automobili.html">Putnička vozila</a>
+                  <a href="kalkulator-teretna.html">Teretna vozila</a>
+                  <a href="kalkulator-motocikli.html">Motocikli</a>
+                  <a href="#">Priključna vozila</a>
+                </div>
+              </div>
+            </center>
+            <center><div id="wrapper">
+
+                <div id="rotator"> 
+                  <table width="654" height="247" border="0" cellpadding="0" cellspacing="0">
+                    <tbody><tr> 
+                      <td valign="middle"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                          <tbody><tr> 
+                            <td align="center"><div align="center"></div>
+                              <form method="post" name="formkal" target="_self" id="formkal">
+                                <table class="prva" width="58%" border="0" align="center" cellpadding="0" cellspacing="0">
+                                  <tbody><tr> 
+                                    <td height="24">&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                    <td colspan="2">&nbsp;</td>
+                                  </tr>
+                                  <tr> 
+                                    <td width="2%" height="24">&nbsp;</td>
+                                    <td width="63%"><span class="style5">Snaga vozila (kw):</span></td>
+                                    <td colspan="2"><input  name="kilovati" type="text" class="polje" id="kilovati3" value="" size="3" maxlength="5" style="background-color:#ffffff; color:#000000; font-weight: bold;  text-align:left; border: dotted 1px #094F83;"> 
+                                      <span class="style32"> </span></td>
+                                  </tr>
+                                  <tr> 
+                                    <td>&nbsp;</td>
+                                    <td><b><span class="style5">Zapremina motora (ccm):</span></b></td>
+                                    <td colspan="2"><span class="style31"> 
+                                      <input name="kubikaza" class="polje" id="kubikaza4" maxlength="5" type="text" style="background-color:#ffffff; color:#000000; font-weight: bold;  text-align:left; border: dotted 1px #094F83;">
+                                      </span><span class="style27"> </span></td>
+                                  </tr>
+                                  <tr> 
+                                    <td>&nbsp;</td>
+                                    <td><span class="style5">Godište vozila : </span></td>
+                                    <td colspan="2"><input name="godiste" class="polje" id="godiste4" size="4" maxlength="4" type="text" style="background-color:#ffffff; color:#000000; font-weight: bold;  text-align:left; border: dotted 1px #094F83;"> 
+                                      <span class="style30"><span class="style29"> </span></span></td>
+                                  </tr>
+                                  <tr> 
+                                    <td>&nbsp;</td>
+                                    <td><span class="style5">Osiguranje:</span></td>
+                                    <td colspan="2"><span class="style1711"><span class="style44"><span class="style43"> 
+                                      <select name="osiguranje" class="polje" id="select11">
+                                        <option value="0" selected="">AMSS</option>
+                                      </select>
+                                      </span></span> </span></td>
+                                  </tr>
+                                  <tr> 
+                                    <td>&nbsp;</td>
+                                    <td><span class="style5">Opština:</span></td>
+                                    <td colspan="2"><span class="style1711"> 
+                                      <select name="opstina" class="polje" id="select">
+                                        <option value="0" selected="">Leskovac</option>
+                                        <option value="1">Lebane</option>
+                                        <option value="2">Bojnik</option>
+                                        <option value="3">Medvedja</option>
+                                        <option value="4">Vlasotince</option>
+                                        <option value="5">Kruševac</option>
+                                        <option value="6">Trstenik</option>
+                                      </select>
+                                      </span></td>
+                                  </tr>
+                                  <tr> 
+                                    <td>&nbsp;</td>
+                                    <td><span class="style5">Bonus/malus:</span></td>
+                                    <td colspan="2"><span class="style1711"> 
+                                      <select name="bonus" class="polje" id="select2">
+                                        <option value="6">Malus 50%</option>
+                                        <option value="5">Malus 30%</option>
+                                        <option value="4">Malus 15%</option>
+                                        <option value="0" selected="">P4</option>
+                                        <option value="1">P3</option>
+                                        <option value="2">P2</option>
+                                        <option value="3">P1</option>
+                                      </select>
+                                      </span></td>
+                                  </tr>
+                                  <tr> 
+                                    <td>&nbsp;</td>
+                                    <td><span class="style5">Saobraćajna/tablice:</span></td>
+                                    <td colspan="2"><span class="style1711"> 
+                                      <select name="saob" class="polje" id="select3">
+                                        <option value="0" selected="">-</option>
+                                        <option value="1">Nova saobracajna</option>
+                                        <option value="2">Nove tablice i saob.</option>
+                                      </select>
+                                      </span></td>
+                                  </tr>
+                                  <tr> 
+                                    <td>&nbsp;</td>
+                                    <td colspan="2">&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                  </tr>
+                                  <tr> 
+                                    <td>&nbsp;</td>
+                                    <td colspan="2"><div ><span class="style26"> 
+                                      <button   name="racunaj"  id="racunaj4" onclick="calculate(formkal.bonus.value,formkal.kubikaza.value,formkal.godiste.value,formkal.kilovati.value,formkal.osiguranje.value,formkal.opstina.value,formkal.saob.value)" value="Izracunaj registraciju" type="button" class="button">Izračunaj registraciju</button>
+                                      
+                                        </span></div></td>
+                                    <td width="7%">&nbsp;</td>
+                                  </tr>
+                                </tbody></table>
+                              </form></td>
+                            <td><div align="center"></div></td>
+                          </tr>
+                        </tbody></table></td>
+                    </tr>
+                  </tbody></table>
+                </div>
+              
+                  
+                <div id="content"> 
+                  <div id="main"> 
+                    <h1>Proračun registracije putničkih vozila</h1>
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                      <tbody><tr> 
+                        <td>&nbsp;</td>
+                        <td><p>&nbsp;</p></td>
+                        <td>&nbsp;</td>
+                      </tr>
+                      <tr> 
+                        <td>&nbsp;</td>
+                        <td><div align="center"> 
+                            <table width="71%" border="0" align="center" cellpadding="3" cellspacing="1" >
+                              <tbody>
+                                
+                                <tr> 
+                                  <td width="245" class="style38"><div  class="style2 style39">Polisa 
+                                      osiguranja: </div></td>
+                                  <td width="123"  valign="middle"  class="style40" id="polisaobv">0.00 dinara</td>
+                                  <td width="52"  valign="middle"  class="style38" id="polisaobv"><a href="JavaScript:Popup(&#39;takse/polisa.htm&#39;);"></td>
+                                </tr>
+                                <tr> 
+                                  <td class="style38" ><div  class="style40" >&nbsp;</div></td>
+                                  <td  valign="middle"  class="style40" >&nbsp;</td>
+                                  <td  valign="middle"  class="style38" ></td>
+                              </tr>
+                                <tr> 
+                                  <td class="style38" ><div  class="style40" >Komunalna 
+                                    taksa: </div></td>
+                                  <td  valign="middle"  class="style40" id="komunalna">0.00 dinara</td>
+                                  <td  valign="middle"  class="style38" id="komunalna"></td>
+                              </tr>
+                                <tr> 
+                                  <td class="style38" ><div  class="style40" >&nbsp;</div></td>
+                                  <td  valign="middle"  class="style40" id="komunalna">&nbsp;</td>
+                                  <td  valign="middle"  class="style38" id="komunalna"></td>
+                              </tr>
+                                <tr > 
+                                  <td class="style38"><div  class="style40">Porez 
+                                      na upotrebu motornog vozila:</div></td>
+                                  <td  valign="middle" class="style40" id="porez">0.00 dinara</td>
+                                  <td  valign="middle" class="style38" id="porez"><a href="JavaScript:Popup(&#39;takse/porez.htm&#39;);"></td>
+                                </tr>
+                                <tr> 
+                                  <td class="style38" ><div  class="style40" >&nbsp;</div></td>
+                                  <td  valign="middle"  class="style40" id="komunalna">&nbsp;</td>
+                                  <td  valign="middle"  class="style38" id="komunalna"></td>
+                              </tr>
+                                <tr > 
+                                  <td class="style38"><div  class="style40">Republička 
+                                      administrativna taksa :</div></td>
+                                  <td  valign="middle" class="style40" id="mup">0.00 dinara</td>
+                                  <td  valign="middle" class="style38" id="mup"><a href="JavaScript:Popup(&#39;takse/administrativna.htm&#39;);"></td>
+                                </tr>
+                                <tr> 
+                                  <td class="style38" ><div  class="style40" >&nbsp;</div></td>
+                                  <td  valign="middle"  class="style40" id="komunalna">&nbsp;</td>
+                                  <td  valign="middle"  class="style38" id="komunalna"></td>
+                              </tr>
+                                <tr> 
+                                  <td class="style38" width="245"><div class="style40" >Zavod 
+                                      - saobraćajna: </div></td>
+                                  <td class="style40" id="saobracajna"  valign="middle" width="123">0.00 dinara</td>
+                                  <td class="style38" id="saobracajna"  valign="middle" width="52"><a href="JavaScript:Popup(&#39;takse/saobracajna.htm&#39;);"></td>
+                                </tr>
+                                <tr> 
+                                  <td class="style38" ><div  class="style40" >&nbsp;</div></td>
+                                  <td  valign="middle"  class="style40" id="komunalna">&nbsp;</td>
+                                  <td  valign="middle"  class="style38" id="komunalna"></td>
+                              </tr>
+                                <tr > 
+                                  <td width="245" class="style38"><div class="style40" >Zavod 
+                                      - tablice : </div></td>
+                                  <td width="123"  valign="middle" class="style40" id="tablice">0.00 dinara</td>
+                                  <td width="52"  valign="middle" class="style38" id="tablice"><a href="JavaScript:Popup(&#39;takse/tablice.htm&#39;);"></td>
+                                </tr>
+                                <tr> 
+                                  <td class="style38" ><div  class="style40" >&nbsp;</div></td>
+                                  <td  valign="middle"  class="style40" id="komunalna">&nbsp;</td>
+                                  <td  valign="middle"  class="style38" id="komunalna"></td>
+                              </tr>
+                                <tr> 
+                                  <td class="style38" width="245"><div  class="style40">Zavod 
+                                      - nalepnica : </div></td>
+                                  <td class="style40" id="nalepnica"  valign="middle" width="123">0.00 dinara</td>
+                                  <td class="style38" id="nalepnica"  valign="middle" width="52"><a href="JavaScript:Popup(&#39;takse/nalepnica.htm&#39;);"></td>
+                                </tr>
+                                <tr> 
+                                  <td class="style38" ><div  class="style40" >&nbsp;</div></td>
+                                  <td  valign="middle"  class="style40" id="komunalna">&nbsp;</td>
+                                  <td  valign="middle"  class="style38" id="komunalna"></td>
+                              </tr>
+                                <tr > 
+                                  <td  class="style38"><div class="style40" >Opštinska 
+                                      eko taksa : </div></td>
+                                  <td  valign="middle"  class="style40" id="opstinskaeko">0.00 dinara</td>
+                                  <td  valign="middle"  class="style38" id="opstinskaeko"><a href="JavaScript:Popup(&#39;takse/opstinska.htm&#39;);"></td>
+                                </tr>
+                                <tr> 
+                                  <td class="style38" ><div  class="style40" >&nbsp;</div></td>
+                                  <td  valign="middle"  class="style40" id="komunalna">&nbsp;</td>
+                                  <td  valign="middle"  class="style38" id="komunalna"></td>
+                              </tr>
+                                <tr> 
+                                  <td height="16" class="style2"><img src="./files/pixel.gif" width="1" height="10"></td>
+                                  <td class="style38" id="ukupno4"  valign="middle">&nbsp;</td>
+                                  <td class="style38" id="ukupno4"  valign="middle"><span class="style2"><img src="./pixel.gif" width="1" height="10"></span></td>
+                                </tr>
+                                <tr> 
+                                  <td class="style38" ><div  class="style40" >&nbsp;</div></td>
+                                  <td  valign="middle"  class="style40" id="komunalna">&nbsp;</td>
+                                  <td  valign="middle"  class="style38" id="komunalna"></td>
+                              </tr>
+                              <tr> 
+                                <td class="style38" ><div  class="style40" ><hr></div></td>
+                                <td  valign="middle"  class="style40" id="komunalna"><hr></td>
+                                <td  valign="middle"  class="style38" id="komunalna"></td>
+                            </tr>
+                                <tr > 
+                                  <td   class="style38"><div ><span class="style40">Iznos 
+                                      registracije Vašeg vozila: </span></div></td>
+                                  <td width="123"  valign="middle" class="style42 style45" id="ukupno"><b>0.00 dinara </b></td>
+                                  <td   valign="middle" class="style42" id="ukupno">&nbsp;</td>
+                                </tr>
+                                <tr> 
+                                  <td class="style38" ><div  class="style40" >&nbsp;</div></td>
+                                  <td  valign="middle"  class="style40" id="komunalna">&nbsp;</td>
+                                  <td  valign="middle"  class="style38" id="komunalna"></td>
+                              </tr>
+                                <tr > 
+                                  <td class="style38"><div  class="style39">Tehnički 
+                                      pregled: </div></td>
+                                  <td  valign="middle" class="style40" id="tehnicki">0.00 dinara</td>
+                                  <td  valign="middle" class="style42" id="ukupno">&nbsp;</td>
+                                </tr>
+                                <tr> 
+                                  <td class="style38" ><div  class="style40" >&nbsp;</div></td>
+                                  <td  valign="middle"  class="style40" id="komunalna">&nbsp;</td>
+                                  <td  valign="middle"  class="style38" id="komunalna"></td>
+                              </tr>
+                                <tr > 
+                                  <td  class="style38"><div ><span class="style39">Provizija 
+                                      banke : </span></div></td>
+                                  <td  valign="middle"  class="style40" id="provizija">0.00 dinara</td>
+                                  <td  valign="middle"  class="style47" id="">&nbsp;</td>
+                                </tr>
+                                <tr> 
+                                  <td class="style38" ><div  class="style40" >&nbsp;</div></td>
+                                  <td  valign="middle"  class="style40" id="komunalna">&nbsp;</td>
+                                  <td  valign="middle"  class="style38" id="komunalna"></td>
+                              </tr>
+                                <tr > 
+                                  <td  class="style38"><div  class="style40 style46">UKUPNO 
+                                      : </div></td>
+                                  <td width="123"  valign="middle"  class="style47" id="ukupnotp"><b>0.00 dinara </b></td>
+                                  <td width="52"  valign="middle"  class="style47" id=""><span class="style42"></span></td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div></td>
+                        <td>&nbsp;</td>
+                      </tr>
+                    </tbody></table>
+                  </div>
+                  
+                </div>
+              
+                  
+                
+              
+              </div>
+              </center> 
+        </div>
+        <footer>
+          <div class="content">
+            <div class="left boxs">
+              <div class="upper">
+                <div class="topic">KONTAKT PODACI</div>
+                <img src="images/footer-h4-bg.png" alt="">
+                <p>Adresa: Djordja Stamenkovića 11<br>Leskovac, 16000<br>Telefon: 063/419646<br>Telefon: 016/255987</p>
+              </div>
+            </div>
+            
+            <div class="right boxs" >
+              <div class="topic">Prijavite se na našu newsletter listu</div>
+              <form action="#">
+                <input type="text" placeholder="Enter email address">
+                <input type="submit" name="" value="Send">
+                
+              </form>
+            </div>
+          </div>
+          <div class="bottom">
+            <p>Copyright © 2021 | All rights reserved<br>Created by:<a href="https://www.instagram.com/coding.bogi/"> Bogdan Denić</a></p>
+          </div>
+        </footer>
+<script>
+    function myFunction() {
+      var x = document.getElementById("myTopnav");
+      if (x.className === "topnav") {
+        x.className += " responsive";
+      } else {
+        x.className = "topnav";
+      }
+    }
+    </script>
+</body>
+</html>
