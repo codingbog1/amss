@@ -2,6 +2,10 @@
   font-family: PrimaryFont;
   src: url(fonts/Roboto/Roboto-Bold.ttf);
 }
+@font-face {
+  font-family: Second;
+  src: url(fonts/Roboto/Roboto-Light.ttf);
+}
 body{
   font-family: PrimaryFont;
   background-image: url(images/grb.jpg), url(images/grb.jpg);
@@ -529,6 +533,10 @@ input{
 }
 .row1{
   color: rgb(35,82,124);
+  
+}
+.row1 h3{
+  font-family: Second;
 }
 .row1 a{
   color: rgb(35,82,124);
